@@ -99,91 +99,90 @@ class Personagem{
 
 
 // Conta Bancaria
-// Nome, Preço, Estoque e Peso
-ProdutoFisico fruta = new ProdutoFisico("Melancia", 10.50, 30, 5);
-fruta.ExibirDetalhes();
+ContaBancaria minhaConta = new ContaBancaria("Victor", 500);
+Console.WriteLine($"Conta de {minhaConta.Titular} criado com sucesso!");
 
-public abstract class Produto{
+ContaBancaria outraConta = new ContaBancaria("Amigo", 100);
+Console.WriteLine($"Conta de {outraConta.Titular} criado com sucesso!");
 
-    // posso ler o nome, mas modifica-lo só com a classe
-    public string Nome {get; private set;}
-    private double _preco;
-    public double Preco{
+Console.WriteLine($"Saldo inicial de {minhaConta.Titular}: {minhaConta.Saldo}");
+Console.WriteLine($"Saldo inicial de {outraConta.Titular}: {outraConta.Saldo}");
 
-        get{
-            return _preco;
-        }
+minhaConta.Transferir(200, outraConta);
 
-        // value é literalmente o valor da variável, também faço uma verificação para alteralo na classe.
-        set
-        {
-            if(value < 0.10)
-            {
-                _preco = 0.10;
-            }
-            else
-            {
-                _preco = value;
-            }
-        }
-    }
-    
-    private int _estoque; 
-    public int Estoque
+Console.WriteLine($"Saldo final de {minhaConta.Titular}: {minhaConta.Saldo}");
+Console.WriteLine($"Saldo final de {outraConta.Titular}: {outraConta.Saldo}");
+
+class ContaBancaria(string NomeInformado, double SaldoInicial)
+{
+    public string Titular = NomeInformado;
+    public double Saldo = SaldoInicial;
+    public void Depositar(double Valor)
     {
-        get
-        {
-            return _estoque;
-        }
-
-        set
-        {
-            if(value < 0)
-            {
-                _estoque = 0;
-            }
-            else
-            {
-                _estoque = value;
-            }
-        }
+        Saldo += Valor;
+        Console.WriteLine(Saldo);
     }
 
-    // Construtor da classe, nada muito especial.
-    // Se eu quiser posso adicionar um valor fixo pra uma variável e optar por mudar o valor ou usar um fixo.
-    public Produto(string nome, double precoInicial, int estoqueInicial)
+    public void Transferir(double Valor, ContaBancaria ContaDestino)
     {
-        Nome = nome;
-        Preco = precoInicial;
-        Estoque = estoqueInicial;
+        if(this.Saldo >= Valor)
+        {
+            this.Saldo -= Valor;
+            ContaDestino.Depositar(Valor);
+        }
+        else{
+            Console.WriteLine("Saldo insuficiente.");
+        }
+    }
+}
+
+
+
+// Sistema de Frotas
+CarroEletrico meuCarroEletrico = new CarroEletrico();
+meuCarroEletrico.Modelo = "Tesla 3";
+meuCarroEletrico.Abastcer(10);
+meuCarroEletrico.RealizarRevisao();
+Console.WriteLine($"Veículo: {meuCarroEletrico.Modelo} está pronto para uso!");
+
+Caminhao meuCaminhao = new Caminhao();
+meuCaminhao.Modelo = "Caminhão Honda";
+meuCaminhao.Abastcer(100);
+meuCaminhao.RealizarRevisao();
+Console.WriteLine($"Veículo: {meuCaminhao.Modelo} está pronto para uso!");
+
+public abstract class Veiculo{
+
+    protected string Placa{get; set;}
+    public string Modelo{get; set;}
+
+    public abstract void Abastcer(double litros);
+}
+
+public interface IManutencao
+{
+    void RealizarRevisao();
+}
+
+public class Caminhao : Veiculo, IManutencao{
+    public double CargaMaxima{get; set;}
+
+    public override void Abastecer(double litros){
+        Console.WriteLine($"Abastecendo Caminhão com {litros} litros de Diesel. Custo: R${litros * 6}.")
     }
 
-    // Virtual simboliza que é uma classe que eu posso "sobrescreve-la" depois
-    public virtual void ExibirDetalhes()
-    {
-        Console.WriteLine($"Nome: {Nome}, Preço: {Preco}, Estoque: {Estoque}");
+    public void RealizarRevisao(){
+        Console.WriteLine("Revisando freios e suspensão do Caminhão")
     }
 
 }
 
-// Herança
-// Produto Físico herda os atributos do pai (Produto)
-public class ProdutoFisico : Produto
-{
-    // Peso é um atributo único da classe filha
-    public double PesoProduto{get; set;}
-
-    // com base eu tô falando que os atributos que estão sendo referenciados pertecem ao pai
-    public ProdutoFisico(string nome, double preco, int estoque, double peso) : base(nome, preco, estoque)
-    {
-        PesoProduto = peso;
+public class CarroEletrico : Veiculo, IManutencao{
+    public override void Abastecer(double litros){
+        Console.WriteLine($"Carregando bateria com {litros}kWh");
     }
 
-    // Override significa que estou sobrescrevendo uma classe Virtual
-    public override void ExibirDetalhes()
-    {
-        //Base ja ta pegando o que a minha classe virtual BASE tinha e reutilizando
-        base.ExibirDetalhes();
-        Console.WriteLine($"Peso: {PesoProduto}");
+    public void RealizarRevisao(){
+        Console.WriteLine("Verificando celulas da bateria e software.");
     }
- }
+}
