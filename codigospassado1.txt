@@ -1,0 +1,189 @@
+// Teste tipagem de variáveis
+/*
+int anoNascimento = 2006;
+string nomeUsuario = "Victor Leon";
+double saldoConta = 13175.70;
+bool estaAtivo = true;
+
+int idade = 2025 - anoNascimento;
+
+
+Console.WriteLine($"Nome: {nomeUsuario}");
+Console.WriteLine($"Idade: {idade}");
+Console.WriteLine($"Nascido em: {anoNascimento}");
+Console.WriteLine($"Saldo Total: {saldoConta}");
+
+if (estaAtivo == true){
+    Console.WriteLine($"Status da conta: Ativada");
+} else{
+    Console.WriteLine($"Status da conta: Desativada");
+}
+
+// Estudo de loops e condicionais
+
+for (int i = 0; i < 10; i++){
+    if (i % 2 == 0){
+        Console.WriteLine(i);
+    }
+}
+
+int a = 10;
+while (a > 0)
+{
+    Console.WriteLine($"Contagem regressiva: {a}");
+    a--;
+}
+
+Console.WriteLine("Contagem acabou");
+
+// Métodos
+void SaudarUsuario(string nome){
+    Console.WriteLine($"Olá, vem vindo usuario {nome}!");
+}
+SaudarUsuario("Leon");
+
+void NumeroPar(int limite){
+    Console.WriteLine($"----- Números pares até o número {limite} -----");
+    for (int i = 0; i < limite; i++){
+        if(i % 2 == 0){
+            Console.WriteLine(i);
+        }
+    }
+}
+
+NumeroPar(20);
+*/
+
+int Somar(int a, int b){
+    return a + b;
+}
+
+int resultado = Somar(10, 5);
+Console.WriteLine(resultado);
+
+
+
+// POO BÀSICO
+// CRIANDO OBJETOS
+Personagem heroi = new Personagem();
+heroi.Nome = "Ben 10";
+heroi.Vida = 10;
+
+Personagem vilao = new Personagem();
+vilao.Nome = "Vilgax";
+vilao.Vida = 50;
+
+// CRIANDO COMPORTAMENTOS
+heroi.Apresentar();
+heroi.Atacar(vilao);
+
+// Definindo Classe
+
+class Personagem{
+
+    // PROPRIEDADES: São as características (o que ele TEM)
+    public string Nome;
+    public int Vida;
+
+    // MÉTODOS: São os comportamentos (o que ele FAZ)
+    public void Apresentar(){
+        Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Vida} de HP.");
+    }
+
+    public void Atacar(Personagem alvo){
+        Console.WriteLine($"{Nome} atacou {alvo.Nome}!");
+        alvo.Vida -= 10;
+        Console.WriteLine($"Agora {alvo.Nome} tem {alvo.Vida} de HP!");
+    }
+}
+
+
+// Conta Bancaria
+// Nome, Preço, Estoque e Peso
+ProdutoFisico fruta = new ProdutoFisico("Melancia", 10.50, 30, 5);
+fruta.ExibirDetalhes();
+
+public abstract class Produto{
+
+    // posso ler o nome, mas modifica-lo só com a classe
+    public string Nome {get; private set;}
+    private double _preco;
+    public double Preco{
+
+        get{
+            return _preco;
+        }
+
+        // value é literalmente o valor da variável, também faço uma verificação para alteralo na classe.
+        set
+        {
+            if(value < 0.10)
+            {
+                _preco = 0.10;
+            }
+            else
+            {
+                _preco = value;
+            }
+        }
+    }
+    
+    private int _estoque; 
+    public int Estoque
+    {
+        get
+        {
+            return _estoque;
+        }
+
+        set
+        {
+            if(value < 0)
+            {
+                _estoque = 0;
+            }
+            else
+            {
+                _estoque = value;
+            }
+        }
+    }
+
+    // Construtor da classe, nada muito especial.
+    // Se eu quiser posso adicionar um valor fixo pra uma variável e optar por mudar o valor ou usar um fixo.
+    public Produto(string nome, double precoInicial, int estoqueInicial)
+    {
+        Nome = nome;
+        Preco = precoInicial;
+        Estoque = estoqueInicial;
+    }
+
+    // Virtual simboliza que é uma classe que eu posso "sobrescreve-la" depois
+    public virtual void ExibirDetalhes()
+    {
+        Console.WriteLine($"Nome: {Nome}, Preço: {Preco}, Estoque: {Estoque}");
+    }
+
+}
+
+// Herança
+// Produto Físico herda os atributos do pai (Produto)
+public class ProdutoFisico : Produto
+{
+    // Peso é um atributo único da classe filha
+    public double PesoProduto{get; set;}
+
+    // com base eu tô falando que os atributos que estão sendo referenciados pertecem ao pai
+    public ProdutoFisico(string nome, double preco, int estoque, double peso) : base(nome, preco, estoque)
+    {
+        PesoProduto = peso;
+    }
+
+    // Override significa que estou sobrescrevendo uma classe Virtual
+    public override void ExibirDetalhes()
+    {
+        //Base ja ta pegando o que a minha classe virtual BASE tinha e reutilizando
+        base.ExibirDetalhes();
+        Console.WriteLine($"Peso: {PesoProduto}");
+    }
+ }

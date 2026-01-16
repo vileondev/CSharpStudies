@@ -1,0 +1,14 @@
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\bin\Debug\net10.0\OlaMundo.exe
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\bin\Debug\net10.0\OlaMundo.deps.json
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\bin\Debug\net10.0\OlaMundo.runtimeconfig.json
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\bin\Debug\net10.0\OlaMundo.dll
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\bin\Debug\net10.0\OlaMundo.pdb
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.AssemblyInfoInputs.cache
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.AssemblyInfo.cs
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.csproj.CoreCompileInputs.cache
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.dll
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\refint\OlaMundo.dll
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.pdb
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\OlaMundo.genruntimeconfig.cache
+C:\Users\victor\OneDrive\Área de Trabalho\projetos\ProjetoCsharp\OlaMundo\obj\Debug\net10.0\ref\OlaMundo.dll
